@@ -32,6 +32,9 @@
 							"songs": {
 								"villain": {
 									"path": "./data/mcmv/villain/"
+								},
+								"hitorinbo_envy": {
+									"path": "./data/mcmv/hitorinbo_envy/"
 								}
 							}
 						}

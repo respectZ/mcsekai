@@ -105,6 +105,11 @@
                 "set_property": {
                     "pj:song": 170
                 }
+            },
+            "song:hitorinbo_envy": {
+                "set_property": {
+                    "pj:song": 74
+                }
             }
         }
     }

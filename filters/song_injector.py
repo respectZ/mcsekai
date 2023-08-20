@@ -7,11 +7,12 @@ import sys
 songs = os.listdir("./RP/animations/songs/")
 
 song_dict = {
-    "villain": 170
+    "hitorinbo_envy": 74,
+    "villain": 170,
 }
 
 
-def inject(entity_path):
+def inject_rp(entity_path):
     with open(entity_path, "r") as f:
         data = json.load(f)
 
@@ -29,6 +30,28 @@ def inject(entity_path):
             song_animations)
 
     # Write the file
+    with open(entity_path, "w") as f:
+        json.dump(data, f, indent=4)
+
+
+def inject_bp(entity_path):
+    # Inject bp events
+    for k, v in song_dict.items():
+        inject_bp_events(entity_path, {
+            f"song:{k}": {
+                "set_property": {
+                    "pj:song": v
+                }
+            }
+        })
+
+
+def inject_bp_events(entity_path, event):
+    with open(entity_path, "r") as f:
+        data = json.load(f)
+
+    data["minecraft:entity"]["events"].update(event)
+
     with open(entity_path, "w") as f:
         json.dump(data, f, indent=4)
 
@@ -89,6 +112,8 @@ if len(sys.argv) > 1:
     data = json.loads(sys.argv[1])
     for entity_dir in data["entities"]:
         for entity in os.listdir(f"./RP/entity/{entity_dir}/"):
-            inject(f"./RP/entity/{entity_dir}/{entity}")
+            inject_rp(f"./RP/entity/{entity_dir}/{entity}")
+        for entity in os.listdir(f"./BP/entities/{entity_dir}/"):
+            inject_bp(f"./BP/entities/{entity_dir}/{entity}")
 
 generate_ac()

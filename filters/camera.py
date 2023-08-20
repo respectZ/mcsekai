@@ -2,32 +2,7 @@ import json
 import os
 import sys
 import math
-import numpy as np
 import vmdreader as vmdr
-
-
-def rotate_3d_euler(x, y, z, angle_x_deg, angle_y_deg, angle_z_deg):
-    angle_x_rad = np.radians(angle_x_deg)
-    angle_y_rad = np.radians(angle_y_deg)
-    angle_z_rad = np.radians(angle_z_deg)
-
-    # Rotation matrices
-    rotation_x = np.array([[1, 0, 0],
-                           [0, np.cos(angle_x_rad), -np.sin(angle_x_rad)],
-                           [0, np.sin(angle_x_rad), np.cos(angle_x_rad)]])
-
-    rotation_y = np.array([[np.cos(angle_y_rad), 0, np.sin(angle_y_rad)],
-                           [0, 1, 0],
-                           [-np.sin(angle_y_rad), 0, np.cos(angle_y_rad)]])
-
-    rotation_z = np.array([[np.cos(angle_z_rad), -np.sin(angle_z_rad), 0],
-                           [np.sin(angle_z_rad), np.cos(angle_z_rad), 0],
-                           [0, 0, 1]])
-
-    # Apply rotations
-    rotated_coords = np.dot(rotation_z, np.dot(
-        rotation_y, np.dot(rotation_x, np.array([x, y, z]))))
-    return rotated_coords
 
 
 def convert(path, song=""):
@@ -93,7 +68,8 @@ def convert(path, song=""):
         cmds.append(cmd)
 
     cmds = "\n".join(cmds)
-    with open(f"./packs/BP/functions/songs/{song}/camera.mcfunction", "w") as f:
+    os.makedirs(f"./BP/functions/songs/{song}", exist_ok=True)
+    with open(f"./BP/functions/songs/{song}/camera.mcfunction", "w") as f:
         f.write(cmds)
 
 

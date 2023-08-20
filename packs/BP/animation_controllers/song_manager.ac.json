@@ -6,6 +6,9 @@
                 "default": {
                     "transitions": [
                         {
+                            "hitorinbo_envy": "q.property('pj:song') == 74"
+                        },
+                        {
                             "villain": "q.property('pj:song') == 170"
                         }
                     ]
@@ -36,6 +39,36 @@
                     "transitions": [
                         {
                             "default": "q.property('pj:song') != 170"
+                        }
+                    ]
+                },
+                "hitorinbo_envy": {
+                    "on_entry": [
+                        "/execute rotated 0 0 positioned ^^^10 as @e[family=pjsekai,r=1] run event entity @s despawn",
+                        "/execute rotated 0 0 positioned ^^^10 run summon 25ji:kanade ~~~ ~~ song_ch.1",
+                        "/execute rotated 0 0 positioned ^^^10 run summon 25ji:mizuki ~~~ ~~ song_ch.2",
+                        "/execute rotated 0 0 positioned ^^^10 run summon 25ji:miku ~~~ ~~ song_ch.3",
+                        "v.time = q.life_time + 1;"
+                    ],
+                    "transitions": [
+                        {
+                            "hitorinbo_envy.1": "q.life_time >= v.time"
+                        }
+                    ]
+                },
+                "hitorinbo_envy.1": {
+                    "on_entry": [
+                        "/execute rotated 0 0 positioned ^^^10 as @e[family=pjsekai,r=1] run event entity @s song:hitorinbo_envy",
+                        "/playsound hitorinbo_envy @a",
+                        "/execute as @a run scoreboard players set @s hitorinbo_envy 1"
+                    ],
+                    "on_exit": [
+                        "/execute rotated 0 0 positioned ^^^10 as @e[family=pjsekai,r=1] run event entity @s despawn",
+                        "/stopsound @a hitorinbo_envy"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.property('pj:song') != 74"
                         }
                     ]
                 }
