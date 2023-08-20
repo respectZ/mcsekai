@@ -1,0 +1,1 @@
+execute as @a if score @s villain matches 1.. run function songs/villain/camera

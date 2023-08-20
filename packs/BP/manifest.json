@@ -1,0 +1,39 @@
+{
+      "format_version": 2,
+      "header": {
+            "name": "PJSekai",
+            "description": "pack.description",
+            "uuid": "1b9805d5-6051-4826-877b-edf9e866c2ce",
+            "version": [
+                  1,
+                  0,
+                  0
+            ],
+            "min_engine_version": [
+                  1,
+                  20,
+                  0
+            ]
+      },
+      "modules": [
+            {
+                  "type": "data",
+                  "uuid": "83185063-6ab8-451e-a0d1-bd71a7494f14",
+                  "version": [
+                        1,
+                        0,
+                        0
+                  ]
+            }
+      ],
+      "dependencies": [
+            {
+                  "uuid": "ea355f7f-26d9-46ec-8633-31b7b966ac0c",
+                  "version": [
+                        1,
+                        0,
+                        0
+                  ]
+            }
+      ]
+}

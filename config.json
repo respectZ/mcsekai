@@ -1,0 +1,60 @@
+{
+	"$schema": "https://raw.githubusercontent.com/Bedrock-OSS/regolith-schemas/main/config/v1.1.json",
+	"author": "respectZ",
+	"name": "PJSekai",
+	"packs": {
+		"behaviorPack": "./packs/BP",
+		"resourcePack": "./packs/RP"
+	},
+	"regolith": {
+		"dataPath": "./data",
+		"filterDefinitions": {
+			"mcmv": {
+				"runWith": "python",
+				"script": "./filters/mcmv_c.py"
+			},
+			"song_injector": {
+				"runWith": "python",
+				"script": "./filters/song_injector.py"
+			}
+		},
+		"profiles": {
+			"mcmv": {
+				"export": {
+					"readOnly": false,
+					"target": "development",
+					"forceCopy": true
+				},
+				"filters": [
+					{
+						"filter": "mcmv",
+						"settings": {
+							"songs": {
+								"villain": {
+									"path": "./data/mcmv/villain/"
+								}
+							}
+						}
+					}
+				]
+			},
+			"default": {
+				"export": {
+					"readOnly": false,
+					"target": "development",
+					"forceCopy": true
+				},
+				"filters": [
+					{
+						"filter": "song_injector",
+						"settings": {
+							"entities": [
+								"25ji"
+							]
+						}
+					}
+				]
+			}
+		}
+	}
+}

@@ -1,0 +1,31 @@
+{
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.song.fix": {
+            "loop": true,
+            "bones": {
+                "head": {
+                    "rotation": [
+                        35,
+                        -180,
+                        0
+                    ]
+                },
+                "root": {
+                    "position": [
+                        0,
+                        -6,
+                        0
+                    ]
+                },
+                "body_inside": {
+                    "rotation": [
+                        0,
+                        180,
+                        0
+                    ]
+                }
+            }
+        }
+    }
+}

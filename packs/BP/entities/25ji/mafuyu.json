@@ -1,0 +1,120 @@
+{
+    "format_version": "1.19.0",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "25ji:mafuyu",
+            "is_spawnable": true,
+            "is_summonable": true,
+            "is_experimental": false,
+            "properties": {
+                "pj:song": {
+                    "client_sync": true,
+                    "type": "int",
+                    "range": [
+                        0,
+                        400
+                    ],
+                    "default": 0
+                },
+                "pj:song_ch": {
+                    "client_sync": true,
+                    "type": "int",
+                    "range": [
+                        1,
+                        5
+                    ],
+                    "default": 1
+                }
+            }
+        },
+        "component_groups": {
+            "despawn": {
+                "minecraft:instant_despawn": {
+                    "remove_child_entities": false
+                }
+            }
+        },
+        "components": {
+            "minecraft:health": {
+                "value": 1
+            },
+            "minecraft:physics": {},
+            "minecraft:collision_box": {
+                "height": 0,
+                "width": 0
+            },
+            "minecraft:knockback_resistance": {
+                "value": 1
+            },
+            "minecraft:fire_immune": {},
+            "minecraft:persistent": {},
+            "minecraft:type_family": {
+                "family": [
+                    "25ji",
+                    "pjsekai"
+                ]
+            },
+            "minecraft:damage_sensor": {
+                "triggers": [
+                    {
+                        "cause": "entity_attack",
+                        "deals_damage": false,
+                        "on_damage": {
+                            "event": "despawn",
+                            "filters": [
+                                {
+                                    "test": "has_ability",
+                                    "subject": "other",
+                                    "value": "instabuild"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "cause": "all",
+                        "deals_damage": false
+                    }
+                ]
+            }
+        },
+        "events": {
+            "despawn": {
+                "add": {
+                    "component_groups": [
+                        "despawn"
+                    ]
+                }
+            },
+            "song:villain": {
+                "set_property": {
+                    "pj:song": 170
+                }
+            },
+            "song_ch.1": {
+                "set_property": {
+                    "pj:song_ch": 1
+                }
+            },
+            "song_ch.2": {
+                "set_property": {
+                    "pj:song_ch": 2
+                }
+            },
+            "song_ch.3": {
+                "set_property": {
+                    "pj:song_ch": 3
+                }
+            },
+            "song_ch.4": {
+                "set_property": {
+                    "pj:song_ch": 4
+                }
+            },
+            "song_ch.5": {
+                "set_property": {
+                    "pj:song_ch": 5
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,4 @@
+/build
+/.regolith
+*.pyc
+__pycache__

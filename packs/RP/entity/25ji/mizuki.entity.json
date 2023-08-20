@@ -1,0 +1,29 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "25ji:mizuki",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/entity/pjsekai/25ji/mizuki"
+            },
+            "geometry": {
+                "default": "geometry.humanoid_pjsekai_slim"
+            },
+            "animations": {
+                "fix": "animation.song.fix",
+                "songs": "controller.animation.songs"
+            },
+            "scripts": {
+                "animate": [
+                    "songs"
+                ]
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

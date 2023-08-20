@@ -1,0 +1,20 @@
+{
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "identifier": "pj:song_manager",
+            "materials": {
+                "default": "entity_alphatest"
+            },
+            "textures": {
+                "default": "textures/items/blaze_rod"
+            },
+            "geometry": {
+                "default": "geometry.dummy"
+            },
+            "render_controllers": [
+                "controller.render.default"
+            ]
+        }
+    }
+}

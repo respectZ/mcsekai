@@ -1,0 +1,45 @@
+{
+    "format_version": "1.20.0",
+    "animation_controllers": {
+        "controller.animation.song_manager": {
+            "states": {
+                "default": {
+                    "transitions": [
+                        {
+                            "villain": "q.property('pj:song') == 170"
+                        }
+                    ]
+                },
+                "villain": {
+                    "on_entry": [
+                        "/execute rotated 0 0 positioned ^^^10 as @e[family=pjsekai,r=1] run event entity @s despawn",
+                        "/execute rotated 0 0 positioned ^^^10 run summon 25ji:mafuyu ~~~ ~~ song_ch.1",
+                        "/execute rotated 0 0 positioned ^^^10 run summon 25ji:mizuki ~~~ ~~ song_ch.2",
+                        "v.time = q.life_time + 1;"
+                    ],
+                    "transitions": [
+                        {
+                            "villain.1": "q.life_time >= v.time"
+                        }
+                    ]
+                },
+                "villain.1": {
+                    "on_entry": [
+                        "/execute rotated 0 0 positioned ^^^10 as @e[family=pjsekai,r=1] run event entity @s song:villain",
+                        "/playsound villain @a",
+                        "/execute as @a run scoreboard players set @s villain 1"
+                    ],
+                    "on_exit": [
+                        "/execute rotated 0 0 positioned ^^^10 as @e[family=pjsekai,r=1] run event entity @s despawn",
+                        "/stopsound @a villain"
+                    ],
+                    "transitions": [
+                        {
+                            "default": "q.property('pj:song') != 170"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
